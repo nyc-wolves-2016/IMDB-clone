@@ -1,35 +1,52 @@
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      results: []
+    };
+    this.handleSearchRequest = this.handleSearchRequest.bind(this);
+  }
+
+  handleSearchRequest(result) {
+    // grab the input from the form, which will be state
+    // take that input, and make your ajax call
+    // then set the state of your movies to the reponse
+    this.setState({
+        results: result
+      })
+  }
 
 
   render() {
     return (
-      <div class="big-container">
+      <div className="big-container">
         <header id="top-nav">
           <div id="brand">
             <h1>IMDb - Clone</h1>
           </div>
 
-          <SearchView />
+          <SearchView onSearchRequest={this.handleSearchRequest} />
 
-        <div id="container">
-            <h3 class="title">Title</h3>
-            <p class="plot">Plot</p>
-            <span class="poster">Poster</span>
-            <span class="year">Year</span>
-            <span>TODO: IMDB Rating / Votes</span>
-            <span>TODO: Tomatoes Rating / Votes /Image</span>
-        </div>
+          {/*
+            Search results will update depending on the state.
+            pages loads with no movies, so this will be empty
+            ajax response will update with react magic
+          */}
+
+          {/* <SearchResults results={this.state.movies} /> */}
         </header>
 
-        <section class="container">
+        <SearchResults results={this.state.results}/>
+
+        <section className="container">
           <ArticlesView />
 
-          <TopMoviesView />
+          {/* <TopMoviesView /> */}
 
 
         </section>
 
-        <section class="footer">
+        <section className="footer">
 
           <footer>
             <p>Awesome website, made originally by Neel Gupta.</p>
