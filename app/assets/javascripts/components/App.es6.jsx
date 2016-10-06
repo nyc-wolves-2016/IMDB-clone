@@ -20,39 +20,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="big-container">
-        <header id="top-nav">
-          <div id="brand">
-            <h1>IMDb - Clone</h1>
-          </div>
+
+          <NavBar />
 
           <SearchView onSearchRequest={this.handleSearchRequest} />
 
-          {/*
-            Search results will update depending on the state.
-            pages loads with no movies, so this will be empty
-            ajax response will update with react magic
-          */}
+          <SearchResults results={this.state.results}/>
 
-          {/* <SearchResults results={this.state.movies} /> */}
-        </header>
-
-        <SearchResults results={this.state.results}/>
-
-        <section className="container">
-          <ArticlesView />
-
-          {/* <TopMoviesView /> */}
-
-
-        </section>
 
         <section className="footer">
-
-          <footer>
-            <p>Awesome website, made originally by Neel Gupta.</p>
-          </footer>
-
+          <Footer />
         </section>
+
       </div>
     )
   }
