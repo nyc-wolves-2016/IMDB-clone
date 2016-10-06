@@ -1,7 +1,7 @@
 class ArticlesView extends React.Component {
   render() {
     return (
-      <div class="articles">
+      <div className="articles">
         <MovieArticle />
       </div>
     )
